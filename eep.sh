@@ -2,7 +2,7 @@
 
 if [[ "$#" -eq 0 ]]
 then
-        curl -s 'https://warpdrive-lab.dev.symphony.com/jenkins/view/Security/job/security-pipeline-new/' | sed -n 's!.*pane desc indent-multiline">\(.*\)<br>.*https://\(.*\).gke.*!\1 \2!p' | sort
+        curl -s 'https://warpdrive-lab.dev.symphony.com/jenkins/view/Security/job/security-pipeline-new/' | grep "class=\"build-stop\"" | sed -n 's!.*pane desc indent-multiline">\(.*\)<br>.*https://\(.*\).gke.*!\1 \2!p' | sort
         exit 0
 fi
 
