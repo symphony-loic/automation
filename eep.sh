@@ -50,8 +50,16 @@ then
 	if [[ -n $EPODS ]]
 	then
 		EPOD=`gum choose -- $EPODS`
+		if [[ $? -eq 130 ]]
+		then
+			exit 0
+		fi
 		EPOD=`echo $EPOD | cut -d ':' -f2`
 		APPLICATION=`gum choose -- km hb sbe mg`
+		if [[ $? -eq 130 ]]
+		then
+			exit 0
+		fi
 		enter_epod $APPLICATION $EPOD
 	else
 		echo No active epods found
